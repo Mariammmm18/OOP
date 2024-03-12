@@ -14,4 +14,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: compail 
-      run: g++ game.cpp game.h function.h function.cpp
+      run: g++ game.cpp game.h function.h function.cpp main.cpp
