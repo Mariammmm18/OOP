@@ -2,7 +2,7 @@
 #include "function.h"
 #include <cassert>
 
-namespace function
+namespace functions
 {
     std::vector<int> map(std::vector<int> numbers, std::function<int(int)> fun1)
     {
