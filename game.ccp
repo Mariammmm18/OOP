@@ -1,6 +1,10 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <stdio.h>
+#include <string>
+#include <windows.h>
+
 
 using namespace std;
 namespace game 
