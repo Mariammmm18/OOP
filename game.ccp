@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 
+using namespace std;
 namespace game 
 {
   int getRandomNumber() 
