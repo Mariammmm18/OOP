@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include "game.h"
 
-using namespace std;
 namespace game 
 {
   int getRandomNumber() 
