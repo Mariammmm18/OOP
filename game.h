@@ -1,5 +1,5 @@
 namespace game
 {
-	int rand_numb(int start, int end);
+	int  getRandomNumber(int start, int end);
 	bool isEven(int number);
 }
