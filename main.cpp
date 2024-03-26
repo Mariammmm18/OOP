@@ -1,5 +1,5 @@
 #include "game.h" 
-main()
+int main()
 {
-  startgame();
+  game::startgame();
 }
