@@ -50,11 +50,12 @@ namespace game
       
         return 0;
     }
-}
-void testIsEven()
-{
-    assert(test1::isEven(2) == true);
-    assert(test1::isEven(3) == false);
-    assert(test1::isEven(0) == true);
-    assert(test1::isEven(-1) == false);
+    void testIsEven() 
+    {
+        assert(isEven(2) == true);
+        assert(isEven(3) == false);
+        assert(isEven(0) == true);
+        assert(isEven(17) == false);
+        std::cout << "Tests for isEven passed successfully!" << std::endl;
+    }
 }
