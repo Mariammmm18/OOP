@@ -17,7 +17,7 @@ namespace game
       return num % 2 == 0;
   }
   
-  int main() 
+  int startgame() 
   {
       std::cout << "Welcome to the Brain Games!\n";
       std::string name;
