@@ -19,8 +19,8 @@ namespace game
   
   int startgame() 
   {
-      std::cout << "Welcome to the Brain Games!\n";
       std::string name;
+      std::cout << "Welcome to the Brain Games!\n";
       std::cout << "May I have your name? \n";
       std::cin >> name;
       std::cout << "Hello, " << name << "!\n" << "Answer 'yes' if the number is even, otherwise answer 'no'.\n";
@@ -39,6 +39,7 @@ namespace game
           {
               std::cout << "'" << answer << "' is wrong answer ;(. Correct answer was '" << correctanswer << "'." << std::endl;
               std::cout << "Let's try again, " << name << "!" << std::endl;
+              correctanswer = 0;
           }
           else 
           {
