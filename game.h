@@ -1,6 +1,6 @@
 namespace game
 {
 	int  getRandomNumber(int rand);
-	bool isEven(int number);
+	bool isEven(int num);
 	int startgame();
 }
