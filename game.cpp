@@ -39,7 +39,6 @@ namespace game
           {
               std::cout << "'" << answer << "' is wrong answer ;(. Correct answer was '" << correctanswer << "'." << std::endl;
               std::cout << "Let's try again, " << name << "!" << std::endl;
-              correctanswer = 0;
           }
           else 
           {
