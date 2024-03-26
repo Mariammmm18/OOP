@@ -51,3 +51,10 @@ namespace game
         return 0;
     }
 }
+void testIsEven()
+{
+    assert(test1::isEven(2) == true);
+    assert(test1::isEven(3) == false);
+    assert(test1::isEven(0) == true);
+    assert(test1::isEven(-1) == false);
+}
