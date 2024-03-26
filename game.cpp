@@ -4,17 +4,21 @@
 #include <string>
 #include "game.h"
 
-namespace game {
-    int getRandomNumber() {
+namespace game 
+{
+    int getRandomNumber() 
+    {
         srand(time(0));
         return rand() % 100;
     }
   
-    bool isEven(int num) {
+    bool isEven(int num) 
+    {
         return num % 2 == 0;
     }
 
-    int startgame() {
+    int startgame() 
+    {
         std::string name;
         std::cout << "Welcome to the Brain Games!\n";
         std::cout << "May I have your name? \n";
@@ -23,18 +27,22 @@ namespace game {
         
         int correctanswer = 0;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++) 
+        {
             int number = getRandomNumber();
             std::cout << "Question: " << number << std::endl;
             std::cout << "Your answer: ";
             std::string answer;
             std::cin >> answer;
             std::string correct = isEven(number) ? "yes" : "no";
-            if (answer != correct) {
+            if (answer != correct) 
+            {
                 std::cout << "'" << answer << "' is wrong answer ;(. Correct answer was '" << correct << "'." << std::endl;
                 std::cout << "Let's try again, " << name << "!" << std::endl;
                 correctanswer = 0; // Ошибка исправлена, присваиваем новое значение
-            } else {
+            } 
+            else 
+            {
                 std::cout << "Correct!" << std::endl;
                 correctanswer++;
             }
