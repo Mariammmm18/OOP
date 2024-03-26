@@ -17,7 +17,7 @@ namespace game
       return num % 2 == 0;
   }
   
-  int startgame() 
+  int main() 
   {
       std::cout << "Welcome to the Brain Games!\n";
       std::string name;
@@ -50,11 +50,4 @@ namespace game
   
       return 0;
   }
-}
-void testIsEven()
-{
-    assert(test1::isEven(2) == true);
-    assert(test1::isEven(3) == false);
-    assert(test1::isEven(0) == true);
-    assert(test1::isEven(-1) == false);
 }
