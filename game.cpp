@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
+#include <cassert>
 #include "game.h"
 
 namespace game 
