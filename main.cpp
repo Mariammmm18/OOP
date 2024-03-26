@@ -2,4 +2,5 @@
 main()
 {
   game::startgame();
+  return 0;
 }
