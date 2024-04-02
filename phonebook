@@ -1,1 +1,52 @@
-zzz
+#include <iostream>
+#include <map>
+
+using namespace std;
+
+int main() 
+{
+    map<string, string> phoneBook;
+
+    while (true) 
+    {
+        string command;
+        cout << "Enter command (add, find, exit): ";   // добавить - add, найти - find, завершить - exit
+        cin >> command;
+
+        if (command == "add") 
+        {
+            string name, phoneNumber;
+            cout << "Введите ФИО: ";
+            cin >> name;
+            cout << "Введите номер телефона: ";
+            cin >> phoneNumber;
+            phoneBook[name] = phoneNumber;
+            cout << "Контакт добавлен." << endl;
+        }
+        else if (command == "find") 
+        {
+            string name;
+            cout << "Введите ФИО, которое надо найти: ";
+            cin >> name;
+            if (phoneBook.find(name) != phoneBook.end()) 
+            {
+                cout << "Номер телефона " << name << " : " << phoneBook[name] << endl;
+            } 
+            else 
+            {
+                cout << "Контакт не найден." << endl;
+            }
+        }
+        else if (command == "exit") 
+        { 
+            cout << "Завершение работы." << endl;
+            break;
+        }
+
+        else 
+        {
+            cout << "Неправильная команда. Попробуйте ещё раз." << endl;
+        }
+    }
+    return 0;
+}
