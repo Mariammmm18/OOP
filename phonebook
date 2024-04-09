@@ -17,15 +17,17 @@ private:
     string filename = "phonebook.txt";
     
 public:
-//загружает данные из файла при инициализации объекта
+//конструктор загружает данные из файла при инициализации объекта
     PhoneBook() {
         loadFromStorage();
     }
 
+//деструктор сохраняет данные в файл при уничтожении объекта
     ~PhoneBook() {
         saveToStorage();
     }
 
+//добавляет нового пользователя в книгу
     void addUser(const string& fullName, const string& phoneNumber) {
         User newUser;
         newUser.fullName = fullName;
@@ -33,6 +35,7 @@ public:
         users.push_back(newUser);
     }
 
+//удаляет пользователя из книги по его полному имени
     void deleteUser(const string& fullName) {
         for (auto it = users.begin(); it != users.end(); ++it) {
             if (it->fullName == fullName) {
@@ -42,6 +45,7 @@ public:
         }
     }
 
+//ищет пользователя в книге по полному имени и выводит информацию о нем, если он найден
     void searchUser(const string& fullName) {
         for (const auto& user : users) {
             if (user.fullName == fullName) {
@@ -54,6 +58,7 @@ public:
         cout << "User not found." << endl;
     }
 
+//сохраняет данные всех пользователей в файл
     void saveToStorage() {
         ofstream file(filename);
         if (file.is_open()) {
@@ -64,6 +69,7 @@ public:
         }
     }
 
+//загружает данные из файла и создает объекты пользователей на основе этой информации
     void loadFromStorage() {
         ifstream file(filename);
         if (file.is_open()) {
