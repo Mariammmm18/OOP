@@ -49,13 +49,13 @@ public:
     void searchUser(const string& fullName) {
         for (const auto& user : users) {
             if (user.fullName == fullName) {
-                cout << "User found:" << endl;
-                cout << "Full Name: " << user.fullName << endl;
-                cout << "Phone Number: " << user.phoneNumber << endl;
+                cout << "Пользователь найден:" << endl;
+                cout << "Полное имя: " << user.fullName << endl;
+                cout << "Номер телефона: " << user.phoneNumber << endl;
                 return;
             }
         }
-        cout << "User not found." << endl;
+        cout << "Пользователь не найден." << endl;
     }
 
 //сохраняет данные всех пользователей в файл
@@ -91,11 +91,11 @@ public:
 int main() {
     PhoneBook phoneBook;
 
-    phoneBook.addUser("Иванов Иван Иванович", "1234567890");
-    phoneBook.addUser("Сидоров Константин Олегович", "0987654321");
+    phoneBook.addUser("Николай Римский-Корсаков", "8234567890");
+    phoneBook.addUser("Шарль д’Артаньян", "8987654321");
 
     string fullName;
-    cout << "Enter full name to search: ";
+    cout << "Введите ФИО для поиска: ";
     getline(cin, fullName);
     phoneBook.searchUser(fullName);
 
