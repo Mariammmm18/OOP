@@ -1,52 +1,99 @@
 #include <iostream>
-#include <map>
+#include <map>#include <iostream>
+#include <string>
+#include <fstream>
+#include <vector>
 
 using namespace std;
 
-int main() 
-{
-    map<string, string> phoneBook;
+struct User {
+    string fullName;
+    string phoneNumber;
+};
 
-    while (true) 
-    {
-        string command;
-        cout << "Enter command (add, find, exit): ";   // добавить - add, найти - find, завершить - exit
-        cin >> command;
+class PhoneBook {
+private:
+    vector<User> users;
+    string filename = "phonebook.txt";
+    
+public:
+//загружает данные из файла при инициализации объекта
+    PhoneBook() {
+        loadFromStorage();
+    }
 
-        if (command == "add") 
-        {
-            string name, phoneNumber;
-            cout << "Введите ФИО: ";
-            cin >> name;
-            cout << "Введите номер телефона: ";
-            cin >> phoneNumber;
-            phoneBook[name] = phoneNumber;
-            cout << "Контакт добавлен." << endl;
-        }
-        else if (command == "find") 
-        {
-            string name;
-            cout << "Введите ФИО, которое надо найти: ";
-            cin >> name;
-            if (phoneBook.find(name) != phoneBook.end()) 
-            {
-                cout << "Номер телефона " << name << " : " << phoneBook[name] << endl;
-            } 
-            else 
-            {
-                cout << "Контакт не найден." << endl;
+    ~PhoneBook() {
+        saveToStorage();
+    }
+
+    void addUser(const string& fullName, const string& phoneNumber) {
+        User newUser;
+        newUser.fullName = fullName;
+        newUser.phoneNumber = phoneNumber;
+        users.push_back(newUser);
+    }
+
+    void deleteUser(const string& fullName) {
+        for (auto it = users.begin(); it != users.end(); ++it) {
+            if (it->fullName == fullName) {
+                users.erase(it);
+                break;
             }
         }
-        else if (command == "exit") 
-        { 
-            cout << "Завершение работы." << endl;
-            break;
-        }
+    }
 
-        else 
-        {
-            cout << "Неправильная команда. Попробуйте ещё раз." << endl;
+    void searchUser(const string& fullName) {
+        for (const auto& user : users) {
+            if (user.fullName == fullName) {
+                cout << "User found:" << endl;
+                cout << "Full Name: " << user.fullName << endl;
+                cout << "Phone Number: " << user.phoneNumber << endl;
+                return;
+            }
+        }
+        cout << "User not found." << endl;
+    }
+
+    void saveToStorage() {
+        ofstream file(filename);
+        if (file.is_open()) {
+            for (const auto& user : users) {
+                file << user.fullName << "," << user.phoneNumber << endl;
+            }
+            file.close();
         }
     }
+
+    void loadFromStorage() {
+        ifstream file(filename);
+        if (file.is_open()) {
+            string line;
+            while (getline(file, line)) {
+                size_t pos = line.find(",");
+                if (pos != string::npos) {
+                    User newUser;
+                    newUser.fullName = line.substr(0, pos);
+                    newUser.phoneNumber = line.substr(pos + 1);
+                    users.push_back(newUser);
+                }
+            }
+            file.close();
+        }
+    }
+};
+
+int main() {
+    PhoneBook phoneBook;
+
+    phoneBook.addUser("Иванов Иван Иванович", "1234567890");
+    phoneBook.addUser("Сидоров Константин Олегович", "0987654321");
+
+    string fullName;
+    cout << "Enter full name to search: ";
+    getline(cin, fullName);
+    phoneBook.searchUser(fullName);
+
+    phoneBook.saveToStorage();
+
     return 0;
 }
